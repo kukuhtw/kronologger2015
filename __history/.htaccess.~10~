@@ -1,5 +1,0 @@
-
-RewriteRule ^view/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ kronologger2015/index.php?v=$1&title=$2
-#http://localhost/kronologger2015/view/86
-#http://localhost/kronologger2015/?view=86
-
