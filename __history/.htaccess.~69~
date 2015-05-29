@@ -1,0 +1,13 @@
+RewriteEngine On
+RewriteBase /
+
+#RewriteRule ^viewkron/(.*)$ http://localhost/kronologger2015/index.php?viewkron=$1
+#RewriteRule ^viewkron/(.*)$ http://kronologger.com/index.php?viewkron=$1
+RewriteRule ^viewkron/(.*)$ index.php?viewkron=$1
+
+#http://localhost/kronologger2015/view/86
+#http://localhost/kronologger2015/?view=86
+
+
+
+

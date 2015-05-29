@@ -1,0 +1,4 @@
+# Use PHP52CGI as default
+AddHandler fcgid-script .php
+allow from 112.215.36.142
+allow from 112.215.36.144

@@ -1,0 +1,32 @@
+CREATE TABLE IF NOT EXISTS `thirdpartyapps` (
+  `appid` int(11) NOT NULL AUTO_INCREMENT,
+  `appname` text NOT NULL,
+  `secretkey` text NOT NULL,
+  `devname` varchar(255) NOT NULL,
+  `devemail` varchar(255) NOT NULL,
+  `regdate` datetime NOT NULL,
+  PRIMARY KEY (`appid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `thirdpartyapps`
+--
+
+INSERT INTO `thirdpartyapps` (`appid`, `appname`, `secretkey`, `devname`, `devemail`, `regdate`) VALUES
+(1, 'Demo', 'Demo', 'Demo', 'kukuhtw@gmail.com', '2015-05-01 00:00:00');
+
+
+ALTER TABLE `shout` ADD `isPassword` BOOL NOT NULL ,
+ADD `isAttachment` BOOL NOT NULL ,
+ADD `isthumbnail` BOOL NOT NULL 
+
+
+update`shout` set isPassword='1' WHERE passprotected <> ''
+
+update`shout` set isAttachment ='1' WHERE fileattachment <> ''
+
+update`shout` set isthumbnail ='1' WHERE thumbnail <> ''
+
+ALTER TABLE `shout` ADD `desctime` CHAR( 255 ) NOT NULL 
+
+ALTER TABLE `shout` ADD `appid` INT NOT NULL AFTER `msgid` 

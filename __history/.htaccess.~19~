@@ -1,0 +1,9 @@
+RewriteEngine On
+RewriteBase /
+
+RewriteRule ^view/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ http://localhost/kronologger2015/index.php?view=$1&title=$2
+
+#http://localhost/kronologger2015/view/86
+#http://localhost/kronologger2015/?view=86
+#RewriteRule ^area/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ ruasjalanbaru/index.php?areaid=$1&areaname=$2
+

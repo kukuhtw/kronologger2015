@@ -1,0 +1,13 @@
+<h1>asdasd</h1>
+<a name="formdisplay"></a>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+ <div class="row">
+        <div class="col-sm-12">
+<?
+
+$mode = $_POST['mode'];
+$bolehbukafile=0;
+echo "<br>Tahap 1 = variable volehubkafile = ".$bolehbukafile;
+
+?>

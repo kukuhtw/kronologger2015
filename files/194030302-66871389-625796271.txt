@@ -1,0 +1,13 @@
+sebagai programmer,
+kita tidak perduli apakah aplikasi
+itu dibuat menggunakan C++, C#, Java,
+Python, PHP, Perl, Ruby, javascript, swift,Cocoa selama
+aplikasi itu bisa bertukar data
+dengan format webservices seperti JSON,REST,XML-RPC, masalah
+yang ada bisa kita pecahkan bersama-sama.
+Fanatisme berlebihan terhadap satu OS,programming
+language will getting you nowhere.
+
+it would be nice,
+kalau aja paham garis keras bisa menterjemahkan
+hal ini sebagai sesuatu yang similar

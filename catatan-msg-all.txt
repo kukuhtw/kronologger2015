@@ -1,0 +1,1 @@
+	<br><small>Pos : <input type="text" value="<? echo $lat_shout ?>,<? echo $lon_shout ?>"></small>

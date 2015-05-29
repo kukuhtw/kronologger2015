@@ -1,0 +1,3 @@
+http://feeds2.feedburner.com/ad-exchange-news
+http://adage.com/rss-channel?section_id=20
+http://feeds.feedblitz.com/SethsBlog

@@ -1,0 +1,7 @@
+<?
+include("db.php");
+include("function.php");
+
+$sql = " delete from shout where lat_shout like '0.000%' and lon_shout like '0.00000%'";
+
+?>
