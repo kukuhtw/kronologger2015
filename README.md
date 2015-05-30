@@ -28,9 +28,10 @@ http://localhost/kronologger2015
 dump mysql to your mysql database server, sql available at folder
 /sqldump
 
-
 * Dependencies
 * Database configuration
+set username and password at file db.php
+
 * How to run tests
 * Deployment instructions
 
@@ -44,3 +45,6 @@ dump mysql to your mysql database server, sql available at folder
 
 * Repo owner or admin
 * Other community or team contact
+
+### Contributor ###
+Kukuh TW
