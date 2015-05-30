@@ -4,16 +4,16 @@ Kronologger is Anonymous, No Login, No Registration
 just simply posting about what's going on your neighbourhood.
 Kronologger detect your location by HTML5 Geolocation
 
-
 API avaliable at folder API
 sample cient API is available at folder clienttestAPI
  
 
-
-
 ### What is this repository for? ###
 
 * Quick summary
+I am Kukuh TW (kukuhtw@gmail.com) sharing code for people
+who are interest to building kronologger better
+
 * Version
 *
 
