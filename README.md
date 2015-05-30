@@ -15,12 +15,20 @@ I am Kukuh TW (kukuhtw@gmail.com) sharing code for people
 who are interest to building kronologger better
 
 * Version
-*
+* V1.0 31 May 2015 - I share Kronologger's code to bitbucket.com
 
 ### How do I get set up? ###
 
 * Summary of set up
+build folder kronologger2015 at your local webserver ,
+so you can try and built at your localhost
+http://localhost/kronologger2015
+
 * Configuration
+dump mysql to your mysql database server, sql available at folder
+/sqldump
+
+
 * Dependencies
 * Database configuration
 * How to run tests
