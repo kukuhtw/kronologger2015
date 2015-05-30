@@ -32,8 +32,11 @@ dump mysql to your mysql database server, sql available at folder
 set username and password at file db.php
 
 * How to run tests
-Allow your browser to detect geolocation
-Just simply posting
+
+1. create folder kronologger2015 at your localhost webserver
+2. copy file to your webserver' folder named kronologger2015
+3. Allow your browser to detect geolocation
+4. Just simply posting
 
 * Deployment instructions
 
