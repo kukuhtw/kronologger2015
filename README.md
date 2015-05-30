@@ -1,6 +1,21 @@
-# README #
+# README # KRONOLOGGER.COM
 
-This README would normally document whatever steps are necessary to get your application up and running.
+This is the source code for http://kronologger.com
+you can see http://kronologger.com to know
+how this code works
+
+Kronologger.com is web apps platform to connecting
+people to their neighbourhood,
+No Login, No registration.
+Apps will detect geolocation based on HTML5 geodetection 
+
+location.
+
+Kronologger.com also have an API at folder
+http://kronologger.com/API
+
+to test client, you can try at
+folder /clienttestAPI
 
 ### What is this repository for? ###
 
