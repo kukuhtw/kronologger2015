@@ -4,8 +4,7 @@ Kronologger is Anonymous, No Login, No Registration
 just simply posting about what's going on your neighbourhood.
 Kronologger detect your location by HTML5 Geolocation
 
-API avaliable at folder API
-sample cient API is available at folder clienttestAPI
+API avaliable at folder API, sample cient API is available at folder clienttestAPI
  
 
 ### What is this repository for? ###
@@ -33,6 +32,9 @@ dump mysql to your mysql database server, sql available at folder
 set username and password at file db.php
 
 * How to run tests
+Allow your browser to detect geolocation
+Just simply posting
+
 * Deployment instructions
 
 ### Contribution guidelines ###
