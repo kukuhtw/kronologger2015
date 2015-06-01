@@ -12,6 +12,8 @@ Kronologger's Feature
 * User can protect link sharing file with password
 * user can save file attachment easily by dropbox's script 
 * User can share messages at kronologger to Twitter and Facebook
+* API available, so other developers can built apps based on kronologger's platform
+
 ### What is this repository for? ###
 
 * Quick summary
