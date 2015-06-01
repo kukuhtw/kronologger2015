@@ -41,9 +41,9 @@
 
     /*
     const DB_SERVER = "localhost";
-		const DB_USER = "kronolog_u2015";
-		const DB_PASSWORD = "z=sOS@bWTZ(e";
-		const DB = "kronolog_kron2015";
+		const DB_USER = "k015";
+		const DB_PASSWORD = "(e";
+		const DB = "5";
      */
 
      const DB_SERVER = "localhost";
