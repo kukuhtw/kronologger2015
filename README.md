@@ -11,7 +11,7 @@ Kronologger's Feature
 * User can Sharing File : Images, Video, Flash SWF, Zip , PPT PowerPoint, Document
 * User can protect link sharing file with password
 * user can save file attachment easily by dropbox's script 
-
+* User can share messages at kronologger to Twitter and Facebook
 ### What is this repository for? ###
 
 * Quick summary
