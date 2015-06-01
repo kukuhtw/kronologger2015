@@ -1,6 +1,6 @@
 # README #
 [http://kronologger.com](http://kronologger.com) is web apps platform to connecting your neighbourhood,
-Kronologger is Anonymous, No Login, No Registration 
+**Kronologger is Anonymous**, *No Login*, *No Registration* 
 just simply posting about what's going on your neighbourhood.
 Kronologger detect your location by HTML5 Geolocation
 
