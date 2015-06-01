@@ -4,8 +4,13 @@
 just simply posting about what's going on your neighbourhood.
 Kronologger detect your location by HTML5 Geolocation
 
-API avaliable at folder API, sample cient API is available at folder clienttestAPI
- 
+API avaliable at folder *API*, sample cient API is available at folder *clienttestAPI*
+
+Kronologger's Feature
+
+* User can Sharing File : Images, Video, Flash SWF, Zip , PPT PowerPoint, Document
+* User can protect link sharing file with password
+* user can save file attachment easily by dropbox's script 
 
 ### What is this repository for? ###
 
