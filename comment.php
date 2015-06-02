@@ -6,10 +6,8 @@ $sqlcomment = $sqlcomment. " where 1=1 ";
 $sqlcomment = $sqlcomment. " and msgid='$msgid' ";
 $sqlcomment = $sqlcomment. " order by commentid asc ";
 //echo "<br>sql = ".$sqlcomment;
-$execute_1 = mysql_query($sqlcomment) or die('Error, pada waktu retrieve data!');
-      $jumlahcomment=0;
-      while($rowcomment = mysql_fetch_array($execute_1))
-      {
+$jumlahcomment=0;
+foreach($link->query($sqlcomment) as $rowcomment) {
           $jumlahcomment=$jumlahcomment+1;
           $commentid=$rowcomment['commentid'];
           $contentcomment=$rowcomment['contentcomment'];
@@ -22,7 +20,7 @@ $execute_1 = mysql_query($sqlcomment) or die('Error, pada waktu retrieve data!')
           $second_comment= substr($commentdate,17,2);
           $tt_comment=floor((time()-mktime($hour_comment,$minute_comment,$second_comment,$month_comment,$day_comment,$year_comment))/1);
           $keteranganwaktu_comment = time_left($tt_comment);
-          $zonawaktujakarta_comment = tampilkanconverzonawaktu($commentdate);
+          $zonawaktujakarta_comment = tampilkanconverzonawaktu($commentdate,$link);
 ?>
 <p class="animated infinite shake" align="right"><i>
 <? echo $contentcomment ?></i>
