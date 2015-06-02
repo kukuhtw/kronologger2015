@@ -23,13 +23,14 @@ function ambil_kordinat_latlon($msgid,$link) {
 
 }// end function
 
-function getpasswordFile($id) {
+function getpasswordFile($id,$link) {
 	$sql1=" select passprotected ";
 	$sql1=$sql1. " from shout ";
 	$sql1=$sql1. " where msgid ='$id' ";
-	$get=mysql_query($sql1) or die('Error, query getpasswordFile failed');
-	$result=mysql_fetch_array($get);
-	$passprotected= $result['passprotected'];
+  foreach($link->query($sql1) as $result) {
+    $passprotected= $result['passprotected'];
+  }
+
 	return $passprotected;
 }
  function makeClickableLinks($text) {
