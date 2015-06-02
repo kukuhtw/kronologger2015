@@ -36,7 +36,7 @@ $viewkron = $_GET['viewkron'];
 
 if ($viewkron!="") {
 $sql_condition_id_tertentu = " and msgid ='$viewkron' ";
-$ambil_kordinatnya_pesanini = ambil_kordinat_latlon($viewkron);
+$ambil_kordinatnya_pesanini = ambil_kordinat_latlon($viewkron,$link);
 }
 
 if ($ambil_kordinatnya_pesanini!="") {
@@ -71,35 +71,24 @@ $sql = $sql. " order by msgid desc limit 0,18 ";
 $sql = $sql. " ";
 $sql = $sql. " ";
 
-//echo $sql;
-
-$execute0 = mysql_query($sql) or die('Error, pada waktu retrieve data!');
       $rt=0;
       $selipkaniklan=0;
-      while($row = mysql_fetch_array($execute0))
-      {
+//echo $sql;
+foreach($link->query($sql) as $row) {
           $rt=$rt+1;
           $msgid=$row['msgid'];
           $lat_shout=$row['lat_shout'];
           $lon_shout=$row['lon_shout'];
           $contentmsg=$row['contentmsg'];
-
-
-
-
           $fileattachment=$row['fileattachment'];
           $thumbnail=$row['thumbnail'];
           $postdate=$row['msgdate'];
           $passprotected= $row['passprotected'];
           $checkattachment =  substr($fileattachment, -3);
           $checkattachment = mb_strtolower($checkattachment);
-
            $checextensionkattachment_4huruf =  substr($fileattachment, -4);
           $checextensionkattachment_4huruf = mb_strtolower($checextensionkattachment_4huruf);
-
-
           //echo "<br>check attachemnt = ".$checkattachment;
-
           $month = substr($postdate,5,2);
           $day = substr($postdate,8,2);
           $year = substr($postdate,0,4);
@@ -108,9 +97,8 @@ $execute0 = mysql_query($sql) or die('Error, pada waktu retrieve data!');
           $second= substr($postdate,17,2);
           $tt=floor((time()-mktime($hour,$minute,$second,$month,$day,$year))/1);
           $keteranganwaktu = time_left($tt);
-          $zonawaktujakarta = tampilkanconverzonawaktu($postdate);
+          $zonawaktujakarta = tampilkanconverzonawaktu($postdate,$link);
           $displayimage="";
-
           if ( ($checkattachment=="jpg" || $checkattachment=="png") && $thumbnail!="") {
 
             $displayimage = "<a href='http://".$host."/".$fileattachment."' target='_new'><img src='http://".$host."/".$thumbnail."'></a>";
@@ -134,6 +122,7 @@ $execute0 = mysql_query($sql) or die('Error, pada waktu retrieve data!');
             }
           }
 
+          //gif
           if ($checkattachment=="gif" && $thumbnail=="") {
               $displayimage = "<img src='http://".$host."/".$fileattachment."'>";
                $dropbox_save = "<script type='text/javascript' src='https://www.dropbox.com/static/api/2/dropins.js' id='dropboxjs' data-app-key='k98k2vmr46h14q4'></script>";
@@ -156,29 +145,15 @@ $execute0 = mysql_query($sql) or die('Error, pada waktu retrieve data!');
 
           }
 
+          //swf;
           if ($checkattachment=="swf") {
-            $displayimage = "";
-            $displayimage = "<a target='_new' href='http://".$host."/".$fileattachment."'><img src='http://".$host."/icon-swf.jpg'  width='60' height='80'></a>";
-            $displayimage = $displayimage. "<p><a target='_new' href='http://".$host."/".$fileattachment."'>Download document SWF file here</a>";
-            $dropbox_save = "<script type='text/javascript' src='https://www.dropbox.com/static/api/2/dropins.js' id='dropboxjs' data-app-key='k98k2vmr46h14q4'></script>";
-            $dropbox_save = $dropbox_save. "<p>&nbsp;</p><a href='http://".$host."/".$fileattachment."' class='dropbox-saver'></a>";
-            $dropbox_save = $dropbox_save. "<a href='https://db.tt/nGZfRdiC' target='_new'><img width='20' height='20' src='http://".$host."/icon-dropbox.jpg'><small>Create Account at DropBox</small></a>";
-            if (($passprotected!="" && $mode !="revealfile") || ($passprotected!="" && $bolehbukafile==0)) {
-                 $dropbox_save="";
-                $displayimage ="";
-                $displayimage = "<img src='http://".$host."/icon-swf.jpg'  width='60' height='80'>".
-                $displayimage = $displayimage. "<br>Sorry, Needs Password to open this SWF File ";
-                $displayimage = $displayimage. "<div class='form-group'>";
-                $displayimage = $displayimage. "<form  method='post' action='' class='form-horizontal'>
-                <p><input type='password' name='revealpassword'>
-                <input type='hidden' name='idmessages' value='".$msgid."'>
-                <input type='hidden' name='mode' value='revealfile'>
-                <p><button type='submit' class='btn btn-primary'>Entry password to open File</button></p>";
-                $displayimage = $displayimage. "</form>";
-                $displayimage = $displayimage. "</div>";
-                //$displayimage=$displayimage. "<p>Variabel bolehbukafile = ".$bolehbukafile;
-              }
+          $displayimage=display_messages($host,$fileattachment,$mode,
+          $passprotected,$msgid,
+          $bolehbukafile,
+          "swf","icon-swf.jpg");
           }
+
+
           if ($checkattachment=="ppt" || $checextensionkattachment_4huruf=="pptx" ) {
               $displayimage = "<a target='_new' href='http://".$host."/".$fileattachment."'><img src='icon-ppt.jpg'  width='60' height='80'></a>";
               $displayimage=$displayimage. "<p><a target='_new' href='".$fileattachment."'>Download document PPT file here</a>";
@@ -456,10 +431,34 @@ $execute0 = mysql_query($sql) or die('Error, pada waktu retrieve data!');
                   </div>
           </div>
       <?
-      }
-?>
+      } // end query
 
-<?
+function display_messages($host,$fileattachment,$mode,$passprotected,$msgid,$bolehbukafile,$type_ext_file,$icon_ext_file) {
+            $displayimage = "";
+            $displayimage = "<a target='_new' href='http://".$host."/".$fileattachment."'><img src='http://".$host."/".$icon_ext_file."'  width='60' height='80'></a>";
+            $displayimage = $displayimage. "<p><a target='_new' href='http://".$host."/".$fileattachment."'>Download document SWF file here</a>";
+            $dropbox_save = "<script type='text/javascript' src='https://www.dropbox.com/static/api/2/dropins.js' id='dropboxjs' data-app-key='k98k2vmr46h14q4'></script>";
+            $dropbox_save = $dropbox_save. "<p>&nbsp;</p><a href='http://".$host."/".$fileattachment."' class='dropbox-saver'></a>";
+            $dropbox_save = $dropbox_save. "<a href='https://db.tt/nGZfRdiC' target='_new'><img width='20' height='20' src='http://".$host."/icon-dropbox.jpg'><small>Create Account at DropBox</small></a>";
+            if (($passprotected!="" && $mode !="revealfile") || ($passprotected!="" && $bolehbukafile==0)) {
+                 $dropbox_save="";
+                $displayimage ="";
+                $displayimage = "<img src='http://".$host."/".$icon_ext_file."'  width='60' height='80'>".
+                $displayimage = $displayimage. "<br>Sorry, Needs Password to open this ".$type_ext_file." File ";
+                $displayimage = $displayimage. "<div class='form-group'>";
+                $displayimage = $displayimage. "<form  method='post' action='' class='form-horizontal'>
+                <p><input type='password' name='revealpassword'>
+                <input type='hidden' name='idmessages' value='".$msgid."'>
+                <input type='hidden' name='mode' value='revealfile'>
+                <p><button type='submit' class='btn btn-primary'>Entry password to open File</button></p>";
+                $displayimage = $displayimage. "</form>";
+                $displayimage = $displayimage. "</div>";
+                //$displayimage=$displayimage. "<p>Variabel bolehbukafile = ".$bolehbukafile;
+              }
+    return  $displayimage;
+
+} // end if function
+
   function get_snippet( $str, $wordCount = 10 ) {
   return implode(
     '',
