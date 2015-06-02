@@ -238,7 +238,7 @@ if ($mode=="postcomment") {
 	if ($commentuser!="") {
 		$sqlinsert = "insert into comment (msgid,contentcomment,commentdate) values ('$id_pesandariform','$commentuser',now()) ";
 		//echo "<br>sqlinsert = ". $sqlinsert;
-		 $execute_insert = mysql_query($sqlinsert) or die('Error, pada waktu kirim komentar');
+    $result = $link->exec($sqlinsert);
                $errorUpload="<script>alert('Comment Succeed ! ')</script>";
                  echo $errorUpload;
 	}
@@ -481,8 +481,8 @@ if ($mode=="updatestatus") {
             $sql = $sql. " ";
             $sql = $sql. " ";
 			//echo $sql;
-            $execute1 = mysql_query($sql) or die('Error, pada waktu kirim posting');
-               $errorUpload="<script>alert('Posting berhasil ')</script>";
+      $result = $link->exec($sql);
+                              $errorUpload="<script>alert('Posting berhasil ')</script>";
                  echo $errorUpload;
 
         }
@@ -503,7 +503,8 @@ if ($mode=="updatestatus") {
 
         <div class="col-md-4">
         <? include("disclaimer.php"); ?>
-        <? include("reference.php"); ?>
+<? include("sourcecode.php"); ?>
+<? include("reference.php"); ?>
         <? include("fblike.php"); ?>
         </div>
 
