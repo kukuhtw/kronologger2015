@@ -1,18 +1,18 @@
 <?
-function ambil_kordinat_latlon($msgid) {
+function ambil_kordinat_latlon($msgid,$link) {
   $sql1=" select lat_shout  ";
   $sql1=$sql1. " from shout ";
   $sql1=$sql1. " where msgid ='$msgid' ";
-  $get=mysql_query($sql1) or die('Error, 1 query ambil_kordinat_latlon failed');
-  $result=mysql_fetch_array($get);
-  $lat_shout= $result['lat_shout'];
+  foreach($link->query($sql1) as $row) {
+     $lat_shout= $row['lat_shout'];
+  }
 
   $sql1=" select lon_shout  ";
   $sql1=$sql1. " from shout ";
   $sql1=$sql1. " where msgid ='$msgid' ";
-  $get=mysql_query($sql1) or die('Error, 2 query ambil_kordinat_latlon failed');
-  $result=mysql_fetch_array($get);
-  $lon_shout= $result['lon_shout'];
+  foreach($link->query($sql1) as $row) {
+     $lon_shout= $row['lon_shout'];
+  }
 
   if ($lat_shout!="" &&  $lon_shout!="" ) {
     return  $lat_shout. "," .$lon_shout;
@@ -21,10 +21,7 @@ function ambil_kordinat_latlon($msgid) {
     return "";
   }
 
-
-
-
-}
+}// end function
 
 function getpasswordFile($id) {
 	$sql1=" select passprotected ";
@@ -44,7 +41,7 @@ function getpasswordFile($id) {
 
 function clear_variable_post_get($namevariablel)
 {
-  $namevariablel = mysql_real_escape_string($namevariablel);
+   //$namevariablel = mysql_real_escape_string($namevariablel);
   //echo "<br>namevariablel = ".$namevariablel;
   //$namevariablel = addslashes($namevariablel);
   //echo "<br>namevariablel = ".$namevariablel;
@@ -54,11 +51,14 @@ function clear_variable_post_get($namevariablel)
   return $return;
 }
 
-function tampilkanconverzonawaktu($waktutercetak) {
-$sqlentrysekarang="SELECT DATE_SUB('$waktutercetak', INTERVAL -13 HOUR) as zonewaktu";
-$get=mysql_query($sqlentrysekarang) or die('Error, zonetime failed');
-$result=mysql_fetch_array($get);
-$zonewaktu= $result['zonewaktu'];
+function tampilkanconverzonawaktu($waktutercetak,$link) {
+  $sqlentrysekarang="SELECT DATE_SUB('$waktutercetak', INTERVAL -13 HOUR) as zonewaktu";
+  foreach($link->query($sqlentrysekarang) as $row) {
+  $zonewaktu= $row['zonewaktu'];
+}
+//$get=mysql_query($sqlentrysekarang) or die('Error, zonetime failed');
+//$result=mysql_fetch_array($get);
+//$zonewaktu= $result['zonewaktu'];
 return $zonewaktu;
 }
 
