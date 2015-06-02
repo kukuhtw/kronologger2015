@@ -14,7 +14,7 @@ if ($mode=="revealfile") {
   $cekMd5revealpassword =  md5("kronologger".$valuerevealpassword);
   $valueidmessages = $_POST['idmessages'];
   $sqlcondition = " and msgid='$valueidmessages' ";
-  $ambilpassworddaridatabase = getpasswordFile($valueidmessages);
+  $ambilpassworddaridatabase = getpasswordFile($valueidmessages,$link);
 
   if ($cekMd5revealpassword==$ambilpassworddaridatabase) {
 
