@@ -171,7 +171,14 @@ function success(position) {
 	   <?php
        	    $cookies_php_lat = $_COOKIE['latitude-cookies'];
 	  	    $cookies_php_lon = $_COOKIE['longitude-cookies'];
+			$_SESSION['latitude_session'] = $_COOKIE['latitude-cookies'];
+			$_SESSION['longitude-session'] = $_COOKIE['longitude-cookies'];
+			$session_php_lat = $_SESSION['latitude_session'];
+	  	    $session_php_lon = $_SESSION['longitude-session'];
+			
 			if ($cookies_php_lat=="" && $cookies_php_lon=="") {
+				$session_php_lat = $_SESSION['latitude_session'];
+				$session_php_lon = $_SESSION['longitude-session'];
 				?>
 				window.location = "<?php echo $url_refresh ?>"
 				<?php
@@ -354,6 +361,11 @@ if ($mode=="updatestatus") {
 
 	if ($checextensionkattachment=="xls") {
 		   $extension = "xls";
+			$bolehupload = "1";
+	}
+	
+	if ($checextensionkattachment=="ods") {
+		   $extension = "ods";
 			$bolehupload = "1";
 	}
 
