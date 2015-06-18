@@ -54,6 +54,9 @@ if ($ambil_kordinatnya_pesanini!="") {
 
 $cookies_p_lat = $_COOKIE['latitude-cookies'];
 $cookies_php_lon = $_COOKIE['longitude-cookies'];
+$session_php_lat = $_SESSION['latitude_session'];
+$session_php_lon = $_SESSION['longitude-session'];
+
 $lat_min = $cookies_php_lat - 0.012;
 $lat_max = $cookies_php_lat + 0.012;
 $lon_min = $cookies_php_lon - 0.012;
@@ -152,146 +155,54 @@ foreach($link->query($sql) as $row) {
           $bolehbukafile,
           "swf","icon-swf.jpg");
           }
-
-
-          if ($checkattachment=="ppt" || $checextensionkattachment_4huruf=="pptx" ) {
-              $displayimage = "<a target='_new' href='http://".$host."/".$fileattachment."'><img src='icon-ppt.jpg'  width='60' height='80'></a>";
-              $displayimage=$displayimage. "<p><a target='_new' href='".$fileattachment."'>Download document PPT file here</a>";
-              $dropbox_save = "<script type='text/javascript' src='https://www.dropbox.com/static/api/2/dropins.js' id='dropboxjs' data-app-key='k98k2vmr46h14q4'></script>";
-              $dropbox_save = $dropbox_save. "<p>&nbsp;</p><a href='http://".$host."/".$fileattachment."' class='dropbox-saver'></a>";
-            $dropbox_save = $dropbox_save. "<a href='https://db.tt/nGZfRdiC' target='_new'><img width='20' height='20' src='http://".$host."/icon-dropbox.jpg'><small>Create Account at DropBox</small></a>";
-              if (($passprotected!="" && $mode !="revealfile") || ($passprotected!="" && $bolehbukafile==0)) {
-                $dropbox_save="";
-                $displayimage ="";
-                $displayimage = "<img src='http://".$host."/icon-ppt.jpg'  width='60' height='80'>".
-                $displayimage = $displayimage. "<br>Sorry, Needs Password to open this PPT File ";
-                $displayimage = $displayimage. "<div class='form-group'>";
-                $displayimage = $displayimage. "<form  method='post' action='' class='form-horizontal'>
-                <p><input type='password' name='revealpassword'>
-                <input type='hidden' name='idmessages' value='".$msgid."'>
-                <input type='hidden' name='mode' value='revealfile'>
-                <p><button type='submit' class='btn btn-primary'>Entry password to open File</button></p>";
-                $displayimage = $displayimage. "</form>";
-                $displayimage = $displayimage. "</div>";
-                //$displayimage=$displayimage. "<p>Variabel bolehbukafile = ".$bolehbukafile;
-              }
-            }
-
-          if ($checkattachment=="txt") {
-              $displayimage = "<a target='_new' href='http://".$host."/".$fileattachment."'><img src='http://".$host."/icon-txt.png'  width='60' height='80'></a>";
-              $displayimage=$displayimage. "<p><a target='_new' href='http://".$host."/".$fileattachment."'>Download document TXT file here</a>";
-              //$displayimage=$displayimage. "<p>Variabel bolehbukafile = ".$bolehbukafile;
-            $dropbox_save = "<script type='text/javascript' src='https://www.dropbox.com/static/api/2/dropins.js' id='dropboxjs' data-app-key='k98k2vmr46h14q4'></script>";
-            $dropbox_save = $dropbox_save. "<p>&nbsp;</p><a href='http://".$host."/".$fileattachment."' class='dropbox-saver'></a>";
-            $dropbox_save = $dropbox_save. "<a href='https://db.tt/nGZfRdiC' target='_new'><img width='20' height='20' src='http://".$host."/icon-dropbox.jpg'><small>Create Account at DropBox</small></a>";
-            if (($passprotected!="" && $mode !="revealfile") || ($passprotected!="" && $bolehbukafile==0)) {
-                $dropbox_save="";
-                $displayimage ="";
-                $displayimage = "<img src='http://".$host."/icon-txt.png'  width='60' height='80'>".
-                $displayimage = $displayimage. "<br>Sorry, Needs Password to open this TXT File ";
-                $displayimage = $displayimage. "<div class='form-group'>";
-                $displayimage = $displayimage. "<form  method='post' action='' class='form-horizontal'>
-                <p><input type='password' name='revealpassword'>
-                <input type='hidden' name='idmessages' value='".$msgid."'>
-                <input type='hidden' name='mode' value='revealfile'>
-                <p><button type='submit' class='btn btn-primary'>Entry password to open File</button></p>";
-                $displayimage = $displayimage. "</form>";
-                $displayimage = $displayimage. "</div>";
-                //$displayimage=$displayimage. "<p>Variabel bolehbukafile = ".$bolehbukafile;
-              }
-          }
-          if ($checkattachment=="pdf") {
-              $displayimage = "<a target='_new' href='http://".$host."/".$fileattachment."'><img src='http://".$host."/images-pdf-document.jpg'  width='60' height='80'></a>";
-              $displayimage=$displayimage. "<p><a target='_new' href='http://".$host."/".$fileattachment."'>Download document PDF file here</a>";
-              //$displayimage=$displayimage. "<p>Variabel bolehbukafile = ".$bolehbukafile;
-              $dropbox_save = "<script type='text/javascript' src='https://www.dropbox.com/static/api/2/dropins.js' id='dropboxjs' data-app-key='k98k2vmr46h14q4'></script>";
-              $dropbox_save = $dropbox_save. "<p>&nbsp;</p><a href='http://".$host."/".$fileattachment."' class='dropbox-saver'></a>";
-            $dropbox_save = $dropbox_save. "<a href='https://db.tt/nGZfRdiC' target='_new'><img width='20' height='20' src='http://".$host."/icon-dropbox.jpg'><small>Create Account at DropBox</small></a>";
-              if (($passprotected!="" && $mode !="revealfile") || ($passprotected!="" && $bolehbukafile==0)) {
-                $dropbox_save="";
-                $displayimage ="";
-                $displayimage = "<img src='http://".$host."/images-pdf-document.jpg'  width='60' height='80'>".
-                $displayimage = $displayimage. "<br>Sorry, Needs Password to open this PDF File ";
-                $displayimage = $displayimage. "<div class='form-group'>";
-                $displayimage = $displayimage. "<form  method='post' action='' class='form-horizontal'>
-                <p><input type='password' name='revealpassword'>
-                <input type='hidden' name='idmessages' value='".$msgid."'>
-                <input type='hidden' name='mode' value='revealfile'>
-                <p><button type='submit' class='btn btn-primary'>Entry password to open File</button></p>";
-                $displayimage = $displayimage. "</form>";
-                $displayimage = $displayimage. "</div>";
-                //$displayimage=$displayimage. "<p>Variabel bolehbukafile = ".$bolehbukafile;
-              }
-          }
-          if ($checkattachment=="xls" || $checextensionkattachment_4huruf=="xlsx" ) {
-              $displayimage = "<a target='_new' href='http://".$host."/".$fileattachment."'><img src='http://".$host."/images-xls-document.jpg' width='70' height='100' ></a>";
-              $displayimage=$displayimage. "<p><a target='_new' href='http://".$host."/".$fileattachment."'>Download document XLS file here</a>";
-              $dropbox_save = "<script type='text/javascript' src='https://www.dropbox.com/static/api/2/dropins.js' id='dropboxjs' data-app-key='k98k2vmr46h14q4'></script>";
-              $dropbox_save = $dropbox_save. "<p>&nbsp;</p><a href='http://".$host."/".$fileattachment."' class='dropbox-saver'></a>";
-            $dropbox_save = $dropbox_save. "<a href='https://db.tt/nGZfRdiC' target='_new'><img width='20' height='20' src='http://".$host."/icon-dropbox.jpg'><small>Create Account at DropBox</small></a>";
-
-              if (($passprotected!="" && $mode !="revealfile") || ($passprotected!="" && $bolehbukafile==0)) {
-                $dropbox_save="";
-                $displayimage ="";
-                $displayimage = "<img src='http://".$host."/images-xls-document.jpg'  width='60' height='80'>".
-                $displayimage = $displayimage. "<br>Sorry, Needs Password to open this XLS File ";
-                $displayimage = $displayimage. "<div class='form-group'>";
-                $displayimage = $displayimage. "<form  method='post' action='' class='form-horizontal'>
-                <p><input type='password' name='revealpassword'>
-                <input type='hidden' name='idmessages' value='".$msgid."'>
-                <input type='hidden' name='mode' value='revealfile'>
-                <p><button type='submit' class='btn btn-primary'>Entry password to open File</button></p>";
-                $displayimage = $displayimage. "</form>";
-                $displayimage = $displayimage. "</div>";
-                //$displayimage=$displayimage. "<p>Variabel bolehbukafile = ".$bolehbukafile;
-              }
-          }
-
-          if ($checkattachment=="zip") {
-
-              $displayimage = "<a target='_new' href='http://".$host."/".$fileattachment."'><img src='http://".$host."/icon-zip.png'  width='60' height='80'></a>";
-              $displayimage=$displayimage. "<p><a target='_new' href='http://".$host."/".$fileattachment."'>Download document ZIP file here</a>";
-              $dropbox_save = "<script type='text/javascript' src='https://www.dropbox.com/static/api/2/dropins.js' id='dropboxjs' data-app-key='k98k2vmr46h14q4'></script>";
-                 $dropbox_save = $dropbox_save. "<p>&nbsp;</p><a href='http://".$host."/".$fileattachment."' class='dropbox-saver'></a>";
-              $dropbox_save = $dropbox_save. "<a href='https://db.tt/nGZfRdiC' target='_new'><img width='20' height='20' src='http://".$host."/icon-dropbox.jpg'><small>Create Account at DropBox</small></a>";
-              if (($passprotected!="" && $mode !="revealfile") || ($passprotected!="" && $bolehbukafile==0)) {
-                $dropbox_save="";
-                $displayimage ="";
-                $displayimage = "<img src='http://".$host."/icon-zip.png'  width='60' height='80'>".
-                $displayimage = $displayimage. "<br>Sorry, Needs Password to open this ZIP File ";
-                $displayimage = $displayimage. "<div class='form-group'>";
-                $displayimage = $displayimage. "<form  method='post' action='' class='form-horizontal'>
-                <p><input type='password' name='revealpassword'>
-                <input type='hidden' name='idmessages' value='".$msgid."'>
-                <input type='hidden' name='mode' value='revealfile'>
-                <p><button type='submit' class='btn btn-primary'>Entry password to open File</button></p>";
-                $displayimage = $displayimage. "</form>";
-                $displayimage = $displayimage. "</div>";
-                //$displayimage=$displayimage. "<p>Variabel bolehbukafile = ".$bolehbukafile;
-              }
-          }
-          if ($checkattachment=="doc" || $checextensionkattachment_4huruf=="docx" ) {
-              $displayimage = "<a target='_new' href='".$fileattachment."'><img src='images-doc-document.jpg'  width='60' height='80'></a>";
-              $displayimage=$displayimage. "<p><a target='_new' href='".$fileattachment."'>Download document DOC file here</a>";
-              $dropbox_save = "<script type='text/javascript' src='https://www.dropbox.com/static/api/2/dropins.js' id='dropboxjs' data-app-key='k98k2vmr46h14q4'></script>";
-              $dropbox_save = $dropbox_save. "<p>&nbsp;</p><a href='http://".$host."/".$fileattachment."' class='dropbox-saver'></a>";
-             $dropbox_save = $dropbox_save. "<a href='https://db.tt/nGZfRdiC' target='_new'><img width='20' height='20' src='http://".$host."/icon-dropbox.jpg'><small>Create Account at DropBox</small></a>";
-              if (($passprotected!="" && $mode !="revealfile") || ($passprotected!="" && $bolehbukafile==0)) {
-                $dropbox_save="";
-                $displayimage ="";
-                $displayimage = "<img src='http://".$host."/images-doc-document.jpg'  width='60' height='80'>".
-                $displayimage = $displayimage. "<br>Sorry, Needs Password to open this DOC File ";
-                $displayimage = $displayimage. "<div class='form-group'>";
-                $displayimage = $displayimage. "<form  method='post' action='' class='form-horizontal'>
-                <p><input type='password' name='revealpassword'>
-                <input type='hidden' name='idmessages' value='".$msgid."'>
-                <input type='hidden' name='mode' value='revealfile'>
-                <p><button type='submit' class='btn btn-primary'>Entry password to open File</button></p>";
-                $displayimage = $displayimage. "</form>";
-                $displayimage = $displayimage. "</div>";
-                //$displayimage=$displayimage. "<p>Variabel bolehbukafile = ".$bolehbukafile;
-              }
-              }
+		//ppt or pptx
+		if ($checkattachment=="ppt" || $checextensionkattachment_4huruf=="pptx" ) {
+          $displayimage=display_messages($host,$fileattachment,$mode,
+          $passprotected,$msgid,
+          $bolehbukafile,
+          "ppt","icon-ppt.jpg");
+		
+		}
+		//txt
+		if ($checkattachment=="txt") {
+		  $displayimage=display_messages($host,$fileattachment,$mode,
+          $passprotected,$msgid,
+          $bolehbukafile,
+          "txt","icon-txt.png");
+		}
+		
+		//pdf
+		if ($checkattachment=="pdf") {
+		  $displayimage=display_messages($host,$fileattachment,$mode,
+          $passprotected,$msgid,
+          $bolehbukafile,
+          "pdf","images-pdf-document.jpg");
+		}
+		
+		//xls
+		if ($checkattachment=="xls" || $checkattachment=="ods") {
+		  $displayimage=display_messages($host,$fileattachment,$mode,
+          $passprotected,$msgid,
+          $bolehbukafile,
+          "xls","images-xls-document.jpg");
+		}
+		
+		//zip
+		if ($checkattachment=="zip") {
+		  $displayimage=display_messages($host,$fileattachment,$mode,
+          $passprotected,$msgid,
+          $bolehbukafile,
+          "zip","icon-zip.png");
+		}
+		
+		//doc
+		if ($checkattachment=="doc" || $checextensionkattachment_4huruf=="docx" ) {
+		  $displayimage=display_messages($host,$fileattachment,$mode,
+          $passprotected,$msgid,
+          $bolehbukafile,
+          "doc","images-doc-document.jpg");
+		}
+		
           if ($checkattachment=="mp4" || $checkattachment=="mp3") {
             if ($checkattachment=="mp4") {
               $boxw="320";
@@ -436,7 +347,7 @@ foreach($link->query($sql) as $row) {
 function display_messages($host,$fileattachment,$mode,$passprotected,$msgid,$bolehbukafile,$type_ext_file,$icon_ext_file) {
             $displayimage = "";
             $displayimage = "<a target='_new' href='http://".$host."/".$fileattachment."'><img src='http://".$host."/".$icon_ext_file."'  width='60' height='80'></a>";
-            $displayimage = $displayimage. "<p><a target='_new' href='http://".$host."/".$fileattachment."'>Download document SWF file here</a>";
+            $displayimage = $displayimage. "<p><a target='_new' href='http://".$host."/".$fileattachment."'>Download document ".strtoupper($type_ext_file)." file here</a>";
             $dropbox_save = "<script type='text/javascript' src='https://www.dropbox.com/static/api/2/dropins.js' id='dropboxjs' data-app-key='k98k2vmr46h14q4'></script>";
             $dropbox_save = $dropbox_save. "<p>&nbsp;</p><a href='http://".$host."/".$fileattachment."' class='dropbox-saver'></a>";
             $dropbox_save = $dropbox_save. "<a href='https://db.tt/nGZfRdiC' target='_new'><img width='20' height='20' src='http://".$host."/icon-dropbox.jpg'><small>Create Account at DropBox</small></a>";
